@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Glory:ital,wght@0,100..800;1,100..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* cloud font */
+.rubik {
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.crafty {
+  font-family: "Crafty Girls", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.glory {
+  font-family: "Glory", sans-serif;
+  font-optical-sizing: auto;  
+  font-style: normal;
+}
+
+.bg-home{
+  background: url('./assets/imgs/bg.jpg') no-repeat;  
+  background-size: cover;  
+}
