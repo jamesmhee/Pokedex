@@ -1,28 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import NewComer from './assets/components/NewComer';
-import PokeBox from './assets/components/PokeBox';
-// import { useExampleContext } from './assets/utils/Store';
+import React, { useContext, useEffect, useState } from "react";
+import NewComer from "./assets/components/NewComer";
+import PokeBox from "./assets/components/PokeBox";
+import { Store, StoreContext } from "./assets/utils/Store";
+import Layout from "./assets/components/Layout";
 
 const App = () => {  
-  const getName:string | null = localStorage.getItem("name")
-
-  const [ displayName, setDisplayName ] = useState<string>('')
-  const [ haveName, setHaveName ] = useState<boolean>(false)
-
-  useEffect(()=>{
-    if(getName){
-      setDisplayName(getName)
-      setHaveName(true)
-    }
-  }, [])
+  const { isHaveName } = useContext(StoreContext)
 
   return (
     <>
-      <div className='flex w-screen h-screen justify-center items-center bg-home'>
-        {
-          !haveName ? (<NewComer setDisplayName={setDisplayName} displayName={displayName} setHaveName={setHaveName}/>) : (<PokeBox displayName={displayName}/>)
-        }        
-      </div>
+      <Layout>
+        <Store>
+          <NewComer/>
+        </Store>
+      </Layout>
     </>
   );
 };

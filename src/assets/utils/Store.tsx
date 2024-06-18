@@ -1,27 +1,45 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useMemo, useState } from 'react';
 
 interface ContextProviderType {
   children: JSX.Element | JSX.Element[];
 }
 
 interface StoreContextType {
-  nameDisplay: [string, React.Dispatch<React.SetStateAction<string>>];
-  favoritePoke: [string[], React.Dispatch<React.SetStateAction<string[]>>];
+  nameDisplay: string;
+  setNameDisplay: React.Dispatch<React.SetStateAction<string>>;
+  favoritePoke: any;
+  setFavoritePoke: React.Dispatch<React.SetStateAction<any>>;
+  isHaveName: boolean,
+  setIsHaveName: React.Dispatch<React.SetStateAction<boolean>>;  
 }
 
-export const StoreContext = createContext<StoreContextType | null>(null);
+export const StoreContext = createContext<StoreContextType>({} as StoreContextType);
+
 
 export const Store = ({ children }: ContextProviderType) => {
   const [nameDisplay, setNameDisplay] = useState<string>("");
   const [favoritePoke, setFavoritePoke] = useState<string[]>([]);
-
-  const store: StoreContextType = {
-    nameDisplay: [nameDisplay, setNameDisplay],
-    favoritePoke: [favoritePoke, setFavoritePoke]
-  };
+  const [isHaveName, setIsHaveName] = useState<boolean>(false);  
+  
+  const storeProvider = useMemo(()=>({
+    nameDisplay,
+    setNameDisplay,
+    favoritePoke,
+    setFavoritePoke,
+    isHaveName,
+    setIsHaveName
+  }), 
+  [
+    nameDisplay,
+    setNameDisplay,
+    favoritePoke,
+    setFavoritePoke,
+    isHaveName,
+    setIsHaveName
+  ])
 
   return (
-    <StoreContext.Provider value={store}>
+    <StoreContext.Provider value={storeProvider}>
       {children}
     </StoreContext.Provider>
   );

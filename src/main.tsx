@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import Details from './assets/pages/Details.tsx'
 import Notfound from './assets/pages/Notfound.tsx'
+import Home from './assets/pages/Home.tsx'
+import { Store } from './assets/utils/Store.tsx'
+
 import './index.css'
 import {
   createBrowserRouter,
@@ -13,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>
+  },  
+  {
+    path: "/home",
+    element: <Home/>    
   },
   {
     path: "/poke/:id",
@@ -24,8 +31,10 @@ const router = createBrowserRouter([
   }
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-    <RouterProvider router={router}/>
+ReactDOM.createRoot(document.getElementById('root')!).render(    
+  <Store>
+    <RouterProvider router={router}/>  
+  </Store>
   // <React.StrictMode>
   // </React.StrictMode>,
 )
