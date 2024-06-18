@@ -9,12 +9,11 @@ interface NewComerType {
 
 const NewComer = ({displayName, setDisplayName, setHaveName}: NewComerType) => {
     
-    const saveDisplayName:MouseEventHandler<HTMLButtonElement> = ():void =>{
-        console.log(displayName)
-        if(!displayName){
-            document.querySelector('[name="displayName"]')?.classList.add('border-rose-500')
-        }else{
+    const saveDisplayName:MouseEventHandler<HTMLButtonElement> = ():void =>{        
+        if(displayName){
+            setDisplayName(displayName)
             setHaveName(true)
+            localStorage.setItem('name', displayName)                        
         }
     }
 

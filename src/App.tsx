@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NewComer from './assets/components/NewComer';
 import PokeBox from './assets/components/PokeBox';
 // import { useExampleContext } from './assets/utils/Store';
 
 const App = () => {  
+  const getName:string | null = localStorage.getItem("name")
+
   const [ displayName, setDisplayName ] = useState<string>('')
   const [ haveName, setHaveName ] = useState<boolean>(false)
+
+  useEffect(()=>{
+    if(getName){
+      setDisplayName(getName)
+      setHaveName(true)
+    }
+  }, [])
 
   return (
     <>
