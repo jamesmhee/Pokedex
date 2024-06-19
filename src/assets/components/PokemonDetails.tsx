@@ -16,7 +16,7 @@ const PokemonDetails = ({data, toggle}:IModalProps) => {
                 <div className='flex justify-end p-2'>
                     <button className='rounded-[50px] w-fit p-2' onClick={toggle}><GrClose/></button>
                 </div>
-                <div className='flex justify-center items-center w-full gap-5 h-full overflow-auto'>
+                <div className='flex-col sm:flex-row flex justify-center items-center w-full gap-5 h-full overflow-auto'>
                     <div className='flex flex-col'>
                         <div className='glory text-2xl flex w-full p-5'>
                             <span className='font-bold'>Height : </span>
