@@ -41,3 +41,18 @@ export const getFavPokeData = async (id:object[]) => {
         return json
     }    
 }
+
+export const searchData = async (name: string) =>{
+    let endpoint = `https://pokeapi.co/api/v2/pokemon/${name}`
+    let config = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }    
+    const get = await fetch(endpoint, config)
+    if(get.ok){
+        let json = await get.json()
+        return json
+    }    
+}
