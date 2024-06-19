@@ -31,9 +31,11 @@ const PokeBox = () => {
   return (
     
     <>    
-        <h1 className='select-none text-5xl text-center rubik bg-gradient-to-br from-lime-500 via-yellow-300 to-lime-500 bg-clip-text text-transparent'>
-          Pokédex          
-        </h1>
+        <div className='bg-black py-5 bg-opacity-70'>
+          <h1 className='select-none text-5xl text-center rubik bg-gradient-to-br from-lime-500 via-yellow-300 to-lime-500 bg-clip-text text-transparent'>
+            Pokédex          
+          </h1>
+        </div>
         <div>
           <PokemonList/>          
           {

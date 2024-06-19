@@ -5,12 +5,18 @@ import Details from './assets/pages/Details.tsx'
 import Notfound from './assets/pages/Notfound.tsx'
 import Home from './assets/pages/Home.tsx'
 import { Store } from './assets/utils/Store.tsx'
+import {
+  QueryClient,
+  QueryClientProvider  
+} from '@tanstack/react-query'
 
 import './index.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -32,9 +38,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(    
-  <Store>
-    <RouterProvider router={router}/>  
-  </Store>
+  <QueryClientProvider client={queryClient}>
+    <Store>
+      <RouterProvider router={router}/>  
+    </Store>
+  </QueryClientProvider>
   // <React.StrictMode>
   // </React.StrictMode>,
 )

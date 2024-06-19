@@ -12,3 +12,17 @@ export const getData = async (limit:number, offset:number) =>{
         return json        
     }
 }
+
+export const getPokeData = async (endpoint: string) => {
+    let config = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const get = await fetch(endpoint, config)
+    if(get.ok){
+        let json = await get.json()
+        return json
+    }
+}
