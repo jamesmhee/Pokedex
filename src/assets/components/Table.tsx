@@ -12,7 +12,7 @@ const Table = ({ columns, data, onClickRows }: IColumnsProps) => {
   });
 
   return (
-    <table className='table-auto bg-slate-200 text-center'>
+    <table className='max-w-full w-full table-auto bg-slate-50 text-center'>
       <thead className='sticky top-0'>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
@@ -29,7 +29,7 @@ const Table = ({ columns, data, onClickRows }: IColumnsProps) => {
       </thead>
       <tbody>
         {table.getRowModel().rows.map((row) => (
-          <tr className="hover:bg-zinc-200 cursor-pointer" key={row.id} onClick={(event) => onClickRows(event, row)}>
+          <tr className="border hover:bg-zinc-200 cursor-pointer" key={row.id} onClick={(event) => onClickRows(event, row)}>
             {row.getVisibleCells().map((cell) => (
               <td className="p-3" key={cell.id}>
                 {flexRender(

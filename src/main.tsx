@@ -1,4 +1,3 @@
-import React, { useContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import Details from './assets/pages/Details.tsx'
@@ -37,12 +36,12 @@ const router = createBrowserRouter([
   }
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(    
-  <QueryClientProvider client={queryClient}>
-    <Store>
-      <RouterProvider router={router}/>  
-    </Store>
-  </QueryClientProvider>
+ReactDOM.createRoot(document.getElementById('root')!).render(      
+    <QueryClientProvider client={queryClient}>
+      <Store>
+        <RouterProvider router={router}/>  
+      </Store>
+    </QueryClientProvider>  
   // <React.StrictMode>
   // </React.StrictMode>,
 )

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { getData, getPokeData } from '../../services/Getdata'
 import Table from './Table'
 import type { Row } from '@tanstack/react-table'
@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { PokemonInterface } from '../utils/PokemonInterface'
 import PokemonDetails from './PokemonDetails'
 import useModal from '../../hooks/openModal'
+import Loading from './Loading'
 
 export interface IPokemonListProps {
   count: number
@@ -63,9 +64,9 @@ const PokemonList = () => {
       {
         header: '#',        
         id: 'index',
-        cell: (info: {row: {original: {sprites: {back_default: string}}}})=>{                    
+        cell: (info: {row: {original: {sprites: {front_default: string}}}})=>{                    
           return(
-            <img src={info.row.original.sprites.back_default}></img>
+            <img src={info.row.original.sprites.front_default}></img>
           )
         }
       },
@@ -146,13 +147,7 @@ const PokemonList = () => {
         cell: (info: {row: {original: {stats:{base_stat: number, stat: {name:string}}[]}}})=>{                                                                                         
           return <p>{info.row.original.stats[5].base_stat}</p>
         }
-      },
-      {
-        header: 'FAVORITE',
-        cell: ((info)=>{                    
-          return 'f'
-        })
-      }
+      },      
     ],
     []
   )  
@@ -160,16 +155,19 @@ const PokemonList = () => {
   useEffect(() => {
     if (!data) {
       refetch()
-    }
-    console.log(pokemonData)
+    }    
   }, [data, refetch])
 
-  if (isLoading) return 'Loading...'
+  if (isLoading) return (
+    <div className='w-full h-screen bg-slate-800'>
+      <Loading/>
+    </div>
+  )
 
   if (error) return 'An error has occurred: ' + (error as Error).message
 
   return (
-    <div className='overflow-auto w-auto max-h-[calc(100vh_-_200px)]'>                 
+    <div className='max-w-full overflow-auto w-auto max-h-[calc(100vh_-_200px)]'>                 
     {modal.isOpen ? <PokemonDetails data={pokomonDetails} toggle={modal.toggle}/> : ''}
       <Table
         columns={columns}
