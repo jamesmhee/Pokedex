@@ -124,13 +124,13 @@ const PokemonDetails = ({data, toggle}:IModalProps) => {
                             </div>
                         </div>
                     </div>
-                    <div className='mt-[550px] sm:mt-0 md:mt-0 flex flex-col p-3 shadow w-[450px] items-center justify-center'>
+                    <div className='mt-[550px] sm:mt-0 md:mt-0 flex flex-col p-3 shadow w-auto sm:w-[450px] items-center justify-center'>
                         <h1 className='uppercase w-full rubik text-center font-bold text-2xl rounded-md bg-zinc-200 p-2 px-5'>
                             {data?.name}                    
                         </h1>                    
                         <img loading="lazy" className="w-[250px] h-[250px]" src={data?.sprites.front_default}></img>
                     </div>
-                    <div className='flex flex-col gap-2'>                             
+                    <div className='flex flex-col gap-2 px-5'>                             
                         {data?.stats.map((elm,index)=>{                                   
                             sumTotal += elm.base_stat     
                             const value = () =>{

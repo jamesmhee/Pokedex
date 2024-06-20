@@ -195,7 +195,7 @@ const PokemonList = () => {
   }, [data, limit, offset, refetch])
  
   if (isLoading) return (
-    <div className='w-full h-screen bg-slate-800'>
+    <div className='w-full max-h-[90vh] h-[90vh] bg-slate-800'>
       <Loading/>
     </div>
   )
