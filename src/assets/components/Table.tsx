@@ -2,8 +2,7 @@ import React from 'react'
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import { IColumnsProps } from './PokemonList';
 
-const Table = ({ columns, data, onClickRows }: IColumnsProps) => {    
-  console.log(data, 'sd')
+const Table = ({ columns, data, onClickRows }: IColumnsProps) => {      
   const table = useReactTable({
     columns,
     data,

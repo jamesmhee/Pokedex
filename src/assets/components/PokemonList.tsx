@@ -164,7 +164,7 @@ const PokemonList = () => {
     if(searchValue.length <= 0){
       const data = await getData(10, 0)
       if (data) {
-        const fetchedData = await Promise.all(
+        const fetchedData:PokemonInterface[] = await Promise.all(
           data.results.map(async (elm: Result) => {
             return await getPokeData(elm.url)
           })
@@ -172,7 +172,7 @@ const PokemonList = () => {
         setPokemonData(fetchedData)         
       }
     }else{
-      const search = await searchData(searchValue)
+      const search:PokemonInterface = await searchData(searchValue)
       if(search){
         setPokemonData([search])
       }else{      
@@ -221,7 +221,7 @@ const PokemonList = () => {
           pagination={pagination}
           setPagination={setPagination}
           onClickRows={(event, rows) => onClickRows(event, rows)}
-        />        
+        />
       </div>                  
       <div className="flex items-center gap-2">      
         <select

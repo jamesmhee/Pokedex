@@ -52,7 +52,7 @@ const PokemonDetails = ({data, toggle}:IModalProps) => {
                 }
             })
         }
-    }, [])
+    }, [currentFavorites])
 
     useEffect(()=>{    
         getFavorite()
@@ -64,7 +64,7 @@ const PokemonDetails = ({data, toggle}:IModalProps) => {
         }else{
             setIsMobile(false)
         }        
-    }, [width, height])
+    }, [width, height, getFavorite])
 
   return (
       <div ref={componentRef} className='fixed flex items-center mx-auto justify-center inset-0 w-full h-full bg-slate-500 bg-opacity-50 z-[99]'>
